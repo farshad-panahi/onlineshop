@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Category(models.Modes):
+class Category(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255,blank=True)
@@ -103,7 +103,7 @@ class Cart(models.Model):
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart,on_delete=models.CASCADE,related_name='items')
-    Product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='cart_items')
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='cart_items')
     quantity = models.PositiveIntegerField()
 
     class Meta:
